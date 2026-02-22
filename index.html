@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clovis D.</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="secondary">
+            <ul>
+                <li class="nav-item">
+                    <a href="#home" class="framed" rel="noopener noreferrer">
+                        INÍCIO
+                    </a>
+                </li>
+    
+                <li class="nav-item selected habilidades">
+                    <a href="#habilidades" class="framed" rel="noopener noreferrer">
+                        <span class="framed-image"></span>
+                        <span class="nav-text">
+                            HABILIDADES
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="nav-item projetos">
+                    <a href="#projetos" class="framed" rel="noopener noreferrer">
+                        <span class="framed-image"></span>
+                        <span class="nav-text">
+                            PROJETOS
+                        </span>
+                    </a>
+                </li>
+    
+                <li class="nav-item jornada">
+                    <a href="#jornada" class="framed" rel="noopener noreferrer">
+                        <span class="framed-image"></span>
+                        <span class="nav-text">
+                            JORNADA
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="bg-video">
+        <button class="mute-button" onclick="toggleBgAudio()">
+            <svg id="mute" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-volume-mute-fill" viewBox="0 0 16 16">
+                <path
+                    d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0" />
+            </svg>
+            <svg id="unmute" class="active" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-volume-down-fill" viewBox="0 0 16 16">
+                <path
+                    d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8" />
+            </svg>
+        </button>
+        <div class="animated-bg">
+            <video id="bg-video" loop="loop" preload="metadata" autoplay muted loop playsinline>
+                <source type="video/webm" src="./assets/animated/header.webm">
+            </video>
+        </div>
+    </div>
+    <div id="content-display" class="container">
+        <div class="content">
+            <header>
+                <section class="personal-info">
+                    <h1>Clovis D.</h1>
+                    <span class="dashes"></span>
+                    <span class="localization">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                        </svg>
+                        São José dos Campos - SP
+                    </span>
+                </section>
+
+                <p>
+                    Possuo conhecimento básico em HTML, CSS e iniciei meus estudos em Java recentemente. Estudo com o
+                    objetivo de me tornar um desenvolvedor backend e futuramente evoluir para um Engenheiro de Software
+                    capaz de trabalhar em equipe no planejamento e implementação de sistemas robustos e escaláveis.
+                </p>
+            </header>
+
+            <nav class="main">
+                <a href="#" class="card forging-gnome">
+                    <span>
+                        PROJETOS
+                    </span>
+                </a>
+
+                <a href="./mini-nav.html" class="card toolbox">
+                    <span>
+                        HABILIDADES
+                    </span>
+                </a>
+
+                <a href="#" class="card mountain">
+                    <span>
+                        JORNADA
+                    </span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="content">
+            <section>
+                <div class="content-info">
+                    <h2>Habilidades</h2>
+                </div>
+                <div class="skills grid">
+                    <div class="framed skill habilidades">
+                        <span class="framed-image" width="100%"></span>
+                        <span class="framed-text">HTML</span>
+                    </div>
+                    <div class="framed skill projetos">
+                        <span class="framed-image" width="100%"></span>
+                        <span class="framed-text">CSS</span>
+                    </div>
+                    <div class="framed skill jornada">
+                        <span class="framed-image" width="100%"></span>
+                        <span class="framed-text">JAVA</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="content showing">
+            <section>
+                <div class="content-info">
+                    <h2>Projetos</h2>
+                    <p>
+                        Uma lista dos projetos mais relevantes que desenvolvi durante meus estudos. Projetos menores podem ser encontrados no <a href="http://github.com/guetzan" target="_blank" rel="noopener noreferrer">meu github.</a>
+                    </p>
+                </div>
+                <div class="projects grid">
+                    <div class="project framed">
+                        <h3>Site pessoal</h3>
+                        <h4>Esse site que você tá acessando agora :)</h4>
+
+                        <p>
+                            Feito com o objetivo de praticar o básico de HTML e CSS e de ter uma temática "levemente" inclinada para o <a href="https://pt.wikipedia.org/wiki/World_of_Warcraft" target="_blank" rel="noopener noreferrer">World of Warcraft.</a>
+                        </p>
+                        
+                        <span style="margin-bottom: 8px; display: block;">Desenvolvido utilizando:</span>
+                        <ul class="stack">
+                            <li class="badge">
+                                <span>HTML</span>
+                            </li>
+                            <li class="badge">
+                                <span>CSS</span>
+                            </li>
+                            <li class="badge">
+                                <span>JavaScript</span>
+                            </li>
+                        </ul>
+
+                        <div class="project-links">
+                            <a class="badge" href="http://github.com/guetzan" target="_blank" rel="noopener noreferrer">Página no Github</a>
+                        </div>
+                    </div>
+                    <div class="framed project soon">
+                        <span>Em breve</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="content">
+
+        </div>
+
+        <footer>
+            <section class="socials">
+                <a href="" class="linkedin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-linkedin" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                    </svg>
+                    LINKEDIN
+                </a>
+                <a href="" class="github">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-github" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                    </svg>
+                    GITHUB
+                </a>
+            </section>
+        </footer>
+    </div>
+    <script src="./audio-controller.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
