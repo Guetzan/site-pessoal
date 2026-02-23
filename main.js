@@ -1,46 +1,80 @@
 window.onload = () => {
-    switchDisplayContent(window.location.hash);
+    updatePage();
 }
 
 window.onhashchange = () => {
-    switchDisplayContent(window.location.hash);
+    updatePage();
 }
 
-let contentOnDisplay = document.querySelector('.content.showing');
-
-const secondaryNav = document.querySelector('nav.secondary');
-const display = document.getElementById('content-display');
-const teste = document.getElementById("teste");
-
-function switchDisplayContent(hash) {
-    const content = document.querySelector(hash);
-
-    if(content === contentOnDisplay) 
-        return;
-
-    if(content === document.querySelector('#inicio'))
-        secondaryNav.style.opacity = 0;
-    
-    if(contentOnDisplay === document.querySelector('#inicio'))
-        secondaryNav.style.opacity = 1;
-
-
-    contentOnDisplay.classList.remove('showing');
-    content.classList.add('showing');
-    contentOnDisplay = content;
-
+function updatePage() {
+    updateDisplayContent(getHash());
     updateSecondaryNav();
+    updateNavVisibility();
+    updateFooterPosition();
 }
 
-let selectedNavItem;
+function updateDisplayContent(hash) {
+    const currentOnDisplay = document.querySelector('.content.showing');
 
-function updateSecondaryNav() {
-    if(selectedNavItem) {
-        selectedNavItem.classList.remove('selected');
+    if(currentOnDisplay) {
+        currentOnDisplay.style.opacity = 0;
+        currentOnDisplay.classList.remove('showing'); 
     }
 
-    selectedNavItem = secondaryNav.querySelector(`a[href="${window.location.hash}"]`).parentElement;
+    const replacingContent = document.querySelector('.content' + hash);
+    
+    replacingContent.classList.add('showing');
+    
+    setTimeout(() => {
+        replacingContent.style.opacity = 1;
+    }, 320);
+}
 
+function updateSecondaryNav() {
+    const selectedNavItem = document.querySelector('.nav-item.selected');
 
-    selectedNavItem.classList.add('selected');
+    if(selectedNavItem)
+        selectedNavItem.classList.remove('selected');
+
+    const clickedNavItem = document.querySelector(`.nav-item > a[href="${getHash()}"]`);
+
+    clickedNavItem.parentElement.classList.add('selected');
+}
+
+function updateNavVisibility() {
+    const secondaryNav = document.querySelector('nav.secondary');
+    const hash = getHash();
+
+    if(hash !== '#inicio') {
+        secondaryNav.classList.add('showing');
+
+        return;
+    }
+    
+    secondaryNav.classList.remove('showing');
+}
+
+function updateFooterPosition() {
+    const footer = getFooter();
+
+    footer.style.position = 'absolute';
+    console.log(footer.style.position);
+    footer.style.top = getContentOnDisplay().offsetHeight + 'px';
+}
+
+function getContentOnDisplay() {
+    return document.querySelector('.content.showing');
+}
+
+function getFooter() {
+    return document.querySelector('footer');
+}
+
+function getHash() {
+    let hash = window.location.hash;
+
+    if (hash === '' || hash === null)
+        return '#inicio';
+
+    return hash;
 }

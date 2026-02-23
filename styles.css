@@ -1,3 +1,15 @@
+/*
+Caso você seja uma pessoa que não seja eu (que frase) e esteja lendo esse código CSS, sinto lhe informar que o estado
+atual dele não é dos melhores. Dei uma organizada bem rápida nele, porém ainda tem muito o que ser refatorado/melhorado.
+Coisa que >TALVEZ< eu faça com o passar do tempo, porém tenho muito o que estudar e não quero perder muito tempo mexendo no que
+já funciona minimamente da forma como eu planejei.
+
+
+TODO (apenas o essencial):
+    - Adaptar o menu secundário para dispositivos móveis (alta prioridade)
+    - Melhorar a apresentação da página de habilidades (baixa prioridade)
+*/
+
 :root {
     --bg-color: #141414;
     --card-bg: #1f1f1f;
@@ -38,14 +50,57 @@ svg {
     color: var(--regular-text);
 }
 
+header h1 {
+    color: #c7c7c7;
+}
+
+a, p {
+    color: var(--regular-text);
+}
+
+p {
+    font-size: 1.125rem;
+    letter-spacing: 0.425px;
+}
+
+header, nav {
+    z-index: 1;
+}
+
+nav a, footer a {
+    text-decoration: none;
+}
+
+/*-------------------
+ELEMENTOS GENÉRICOS
+-------------------*/
 .container {
     width: 700px;
-
+    
     margin: 0 auto;
-
+    
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.framed {
+    background-color: var(--card-bg);
+    border: var(--card-border);
+    box-shadow: var(--card-box);
+    border-radius: 4px;
+}
+
+.framed-image {
+    flex-grow: 1;
+    height: 100%;
+    position: relative;
+}
+
+.framed-text {
+    flex-grow: 0.7;
+    display: block;
+    transition: flex-grow ease-in-out 600ms;
 }
 
 .grid {
@@ -54,6 +109,9 @@ svg {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+/*-------------------
+FUNDO ANIMADO 
+-------------------*/
 .animated-bg {
     top: 0;
     left: 0;
@@ -102,35 +160,9 @@ svg {
     bottom: 0;
 }
 
-
-header h1 {
-    color: #c7c7c7;
-}
-
-a, p {
-    color: var(--regular-text);
-}
-
-p {
-    font-size: 1.125rem;
-    letter-spacing: 0.425px;
-}
-
-header, nav {
-    z-index: 1;
-}
-
-nav a, footer a {
-    text-decoration: none;
-}
-
-.framed {
-    background-color: var(--card-bg);
-    border: var(--card-border);
-    box-shadow: var(--card-box);
-    border-radius: 4px;
-}
-
+/*-------------------
+HEADER
+-------------------*/
 header {
     width: 100%;
     margin-bottom: 64px;
@@ -163,6 +195,9 @@ span.localization svg {
     border-bottom: 2px dashed rgba(255,255,255,0.5);
 }
 
+/*-------------------
+NAV PRIMÁRIA
+-------------------*/
 nav.main {
     width: 100%;
     display: grid;
@@ -173,13 +208,21 @@ nav.main {
     margin-bottom: 24px;
 }
 
-/*NAV SECUNDÁRIA*/
+/*-------------------
+NAV SECUNDÁRIA
+-------------------*/
 nav.secondary {
+    pointer-events: none;
     opacity: 0;
     width: 100%;
     margin: 40px 0;
 
     transition: opacity ease-in-out 400ms;
+}
+
+nav.secondary.showing {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 nav.secondary ul {
@@ -210,18 +253,6 @@ nav.secondary .selected {
     transition: flex-grow ease-in-out 300ms;
 }
 
-.framed-text {
-    flex-grow: 0.7;
-    display: block;
-    transition: flex-grow ease-in-out 600ms;
-}
-
-.framed-image {
-    flex-grow: 1;
-    height: 100%;
-    position: relative;
-}
-
 .nav-item .framed-image {
     flex-grow: 0;
     width: 0;
@@ -250,19 +281,6 @@ nav.secondary .selected {
     background-repeat: no-repeat;
     background-position: center;
 }
-
-.habilidades .framed-image::before {
-    background-image: url('./assets/secondary-nav/habilidades.png');
-}
-
-.projetos .framed-image::before {
-    background-image: url('./assets/secondary-nav/projetos.png');
-}
-
-.jornada .framed-image::before {
-    background-image: url('./assets/secondary-nav/jornada.png');
-}
-
 
 a.selected > span::before, li.selected a {
     border-color: goldenrod;
@@ -342,26 +360,14 @@ nav.secondary li {
     filter: none;
 }
 
-/* CARD IMAGES */
-.card.meeting-stone::before {
-    background-image: url('./assets/meeting_stone.png');
-}
-
-.card.toolbox::before {
-    background-image: url('./assets/habilidades.png');
-}
-
-.card.forging-gnome::before {
-    background-image: url('./assets/forging_gnome.png');
-}
-
-.card.mountain::before {
-    background-image: url('./assets/mountain.png');
-}
-
+/*-------------------
+RODAPÉ / FOOTER
+-------------------*/
 footer {
+    position: relative;
+    top: 0px;
     width: 100%;
-    transition: position ease-in-out 500ms;
+    transition: top ease-in-out 250ms;
 }
 
 .socials {
@@ -393,8 +399,6 @@ footer {
     transition: ease-in-out 0.2s;
 }
 
-
-
 .socials > a:hover {
     background-color: var(--card-bg);
 }
@@ -417,12 +421,12 @@ footer {
 /*-------------------
 CONTEÚDOS 
 -------------------*/
-
 .content {
+    padding: 0 0 24px 0;
     opacity: 0;
     position: absolute;
     pointer-events: none;
-    transition: opacity ease-in-out 400ms;
+    transition: opacity ease-in 300ms, opacity ease-out 100ms;
 }
 
 .content-info {
@@ -439,7 +443,6 @@ CONTEÚDOS
 }
 
 .content.showing {
-    opacity: 1;
     position: relative;
     pointer-events: auto;
 }
@@ -553,9 +556,9 @@ PROJETOS
     background-color: var(--card-bg);
 }
 
-
-
-/*JORNADA*/
+/*-------------------
+JORNADA
+-------------------*/
 .objectives {
     display: flex;
     flex-direction: column;
@@ -578,6 +581,10 @@ PROJETOS
     padding: 0 16px;
 }
 
+.objectives h3 {
+    padding-bottom: 8px;
+}
+
 .objectives li::after{
     content: '';
     position: absolute;
@@ -590,6 +597,51 @@ PROJETOS
     
     background-position: bottom right;
     right: 0;
+}
+
+/* .objectives li::after {
+    height:min-content;
+    color: rgb(95, 95, 95);
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+    content: 'HTML';
+    font-weight: bold;
+    font-size: 3rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+} */
+
+/*-------------------
+IMAGENS
+-------------------*/
+.card.meeting-stone::before {
+    background-image: url('./assets/meeting_stone.png');
+}
+
+.card.toolbox::before {
+    background-image: url('./assets/habilidades.png');
+}
+
+.card.forging-gnome::before {
+    background-image: url('./assets/forging_gnome.png');
+}
+
+.card.mountain::before {
+    background-image: url('./assets/mountain.png');
+}
+
+.habilidades .framed-image::before {
+    background-image: url('./assets/secondary-nav/habilidades.png');
+}
+
+.projetos .framed-image::before {
+    background-image: url('./assets/secondary-nav/projetos.png');
+}
+
+.jornada .framed-image::before {
+    background-image: url('./assets/secondary-nav/jornada.png');
 }
 
 .java::after, .skill.java .framed-image::before {
@@ -620,22 +672,6 @@ PROJETOS
     background-image: url('./assets/tech-stacks/css.png');
 }
 
-/* .objectives li::after {
-    height:min-content;
-    color: rgb(95, 95, 95);
-    font-style: italic;
-    padding: 0;
-    margin: 0;
-    content: 'HTML';
-    font-weight: bold;
-    font-size: 3rem;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-} */
-
-/*IMAGENS*/
-
 /* .stack li.html::before {
     background-image: url('./assets/tech-stacks/html.png');
 }
@@ -655,5 +691,13 @@ PROJETOS
     .container {
         width: 100%;
         padding: 0 32px;
+    }
+
+    .content .projects {
+        grid-template-columns: 1fr !important;
+    }
+
+    .framed-image {
+        display: none;
     }
 }

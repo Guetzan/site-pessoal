@@ -4,7 +4,6 @@ const bgVideo = document.getElementById('bg-video');
 const mute = document.getElementById('mute');
 const unmute = document.getElementById('unmute');
 
-
 function toggleBgAudio() {
     bgVideo.volume = 0.55
     bgVideo.muted = !bgVideo.muted;
