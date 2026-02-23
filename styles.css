@@ -178,6 +178,8 @@ nav.secondary {
     opacity: 0;
     width: 100%;
     margin: 40px 0;
+
+    transition: opacity ease-in-out 400ms;
 }
 
 nav.secondary ul {
@@ -358,8 +360,8 @@ nav.secondary li {
 }
 
 footer {
-    margin-top: 24px;
     width: 100%;
+    transition: position ease-in-out 500ms;
 }
 
 .socials {
@@ -409,6 +411,7 @@ footer {
 
 #content-display {
     position: relative;
+    transition: min-height ease-in-out 340ms;
 }
 
 /*-------------------
@@ -416,10 +419,10 @@ CONTEÚDOS
 -------------------*/
 
 .content {
-    width: 100%;
     opacity: 0;
     position: absolute;
     pointer-events: none;
+    transition: opacity ease-in-out 400ms;
 }
 
 .content-info {
@@ -460,6 +463,11 @@ HABILIDADES
     justify-content: center;
     align-items: center;
     font-weight: bold;
+}
+
+.skill * {
+    flex-grow: 1;
+    text-align: center;
 }
 
 /*-------------------
@@ -544,6 +552,89 @@ PROJETOS
 .project-links a:hover {
     background-color: var(--card-bg);
 }
+
+
+
+/*JORNADA*/
+.objectives {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.objectives ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+.objectives li {
+    position: relative;
+    overflow: hidden;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    padding: 0 16px;
+}
+
+.objectives li::after{
+    content: '';
+    position: absolute;
+    height:80px;
+    width: 80px;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+
+    margin: 0 8px;
+    
+    background-position: bottom right;
+    right: 0;
+}
+
+.java::after, .skill.java .framed-image::before {
+    background-image: url('./assets/tech-stacks/java.png');
+}
+
+.git::after, .skill.git .framed-image::before  {
+    background-image: url('./assets/tech-stacks/git.png');
+}
+
+.sql::after, .skill.sql .framed-image::before  {
+    background-image: url('./assets/tech-stacks/sql.png');
+}
+
+.dsa::after, .skill.dsa .framed-image::before  {
+    background-image: url('./assets/tech-stacks/dsa.png');
+}
+
+.spring::after, .skill.spring .framed-image::before  {
+    background-image: url('./assets/tech-stacks/spring.png');
+}
+
+.html::after, .skill.html .framed-image::before  {
+    background-image: url('./assets/tech-stacks/html.png');
+}
+
+.css::after, .skill.css .framed-image::before  {
+    background-image: url('./assets/tech-stacks/css.png');
+}
+
+/* .objectives li::after {
+    height:min-content;
+    color: rgb(95, 95, 95);
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+    content: 'HTML';
+    font-weight: bold;
+    font-size: 3rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+} */
+
+/*IMAGENS*/
 
 /* .stack li.html::before {
     background-image: url('./assets/tech-stacks/html.png');
