@@ -43,14 +43,12 @@ function updateNavVisibility() {
     const secondaryNav = document.querySelector('nav.secondary');
     const hash = getHash();
 
-    console.log(hash);
     if(hash !== '#inicio') {
         secondaryNav.classList.add('showing');
 
         return;
     }
     
-    console.log('chegou aqui');
     secondaryNav.classList.remove('showing');
 }
 

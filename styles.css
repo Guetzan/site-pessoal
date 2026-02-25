@@ -246,6 +246,7 @@ nav.secondary ul {
 
 nav.secondary ul li {
     flex-grow: 1;
+    transition: flex-grow ease-in-out 300ms;
 }
 
 nav.secondary li a {
@@ -299,7 +300,6 @@ nav.secondary ul li.selected a {
 a.selected > span::before, li.selected a {
     border-color: goldenrod;
 }
-
 
 .card {
     position: relative;
