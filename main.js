@@ -80,18 +80,23 @@ function getHash() {
     return hash;
 }
 
+
+/*
+O CÓDIGO ABAIXO COM CERTEZA NÃO TEM NADA A VER COM UM EASTER EGG.
+FIQUE LONGE. NÃO TEM NADA PRA VER AQUI.
+*/
 const myname = document.querySelector('.personal-info h1');
 
 myname.addEventListener('mouseover', () => {
     const tooltip = document.querySelector('.tooltip');
 
-    easterEggTimeout = setTimeout(() => {
+    tooltipTimeout = setTimeout(() => {
         tooltip.classList.add('showing');
     }, 2200)
 });
 
 myname.addEventListener('mouseout', () => {
-    clearTimeout(easterEggTimeout);
+    clearTimeout(tooltipTimeout);
 
     const tooltip = document.querySelector('.tooltip');
 
