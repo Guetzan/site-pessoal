@@ -85,12 +85,14 @@ const myname = document.querySelector('.personal-info h1');
 myname.addEventListener('mouseover', () => {
     const tooltip = document.querySelector('.tooltip');
 
-    setTimeout(() => {
+    easterEggTimeout = setTimeout(() => {
         tooltip.classList.add('showing');
-    }, 2200);
+    }, 2200)
 });
 
 myname.addEventListener('mouseout', () => {
+    clearTimeout(easterEggTimeout);
+
     const tooltip = document.querySelector('.tooltip');
 
     tooltip.classList.remove('showing');

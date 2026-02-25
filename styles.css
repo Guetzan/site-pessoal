@@ -239,13 +239,14 @@ nav.main {
 NAV SECUNDÁRIA
 -------------------*/
 nav.secondary {
+    pointer-events: none;
     opacity: 0;
     width: 100%;
 }
 
 nav.secondary.showing {
-    position: relative;
     opacity: 1;
+    pointer-events: auto;
 }
 
 nav.secondary ul {
