@@ -749,8 +749,16 @@ body {
     opacity: 1;
 }
 
-.tooltip .data {
+.tooltip .body {
     padding: 4px;
+    margin-bottom: 4px;
+}
+
+.tooltip .life {
+  height: 8px;
+  width: 100%;
+  background: green;
+  background-image: linear-gradient(to bottom, #004400, #00cd00, #003f00);
 }
 
 .bordered {
