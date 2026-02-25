@@ -1,14 +1,21 @@
 /*
 Caso você seja uma pessoa que não seja eu (que frase) e esteja lendo esse código CSS, sinto lhe informar que o estado
-atual dele não é dos melhores. Dei uma organizada bem rápida nele, porém ainda tem muito o que ser refatorado/melhorado.
+atual dele não é dos melhores. Dei uma organizada bem, porém ainda tem muito o que ser refatorado/melhorado.
 Coisa que >TALVEZ< eu faça com o passar do tempo, porém tenho muito o que estudar e não quero perder muito tempo mexendo no que
-já funciona minimamente da forma como eu planejei.
+já funciona minimamente da forma como planejei.
 
 
 TODO (apenas o essencial):
     - Adaptar o menu secundário para dispositivos móveis (alta prioridade)
     - Melhorar a apresentação da página de habilidades (baixa prioridade)
 */
+@font-face {
+  font-family: 'Friza';
+  src:  url('./assets/font/friz.woff2') format('woff2');
+  font-weight:normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
     --bg-color: #141414;
@@ -29,6 +36,9 @@ TODO (apenas o essencial):
     box-sizing: border-box;
     font-family: var(--regular-font);
     cursor: url('./assets/cursor.png'), auto;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -690,6 +700,65 @@ IMAGENS
     background-image: url('./assets/tech-stacks/js.png');
 } */
 
+body {
+    position: relative;
+    height: 100dvh;
+}
+
+.tooltip {
+    opacity: 0;
+    pointer-events: none;
+
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+
+    display: flex;
+    gap: 4px;
+    
+    color: #fff;
+    transition: opacity ease-out 400ms;
+}
+
+.tooltip * {
+    font-family: 'Friza' !important;
+}
+
+.tooltip::before {
+    content: '';
+    display: block;
+    
+    width: 36px;
+    height: 36px;
+
+    background-origin: border-box;
+    background-image: url('./assets/me.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+    
+    border: 7px solid black;
+    border-image: url('./assets/border.png');
+    border-width:3px;
+    border-image-slice: 7 7;
+    background-color: var(--bg-color);
+}
+
+.tooltip.showing {
+    opacity: 1;
+}
+
+.tooltip .data {
+    padding: 4px;
+}
+
+.bordered {
+    border: 7px solid black;
+    border-image: url('./assets/border.png');
+    border-width: 3px;
+    border-image-slice: 7 7;
+    background-color: var(--bg-color);
+}
 /*-------------------
     BREAKPOINTS
 -------------------*/
