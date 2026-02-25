@@ -24,19 +24,17 @@ function updateDisplayContent(hash) {
     const replacingContent = document.querySelector('.content' + hash);
     
     replacingContent.classList.add('showing');
-    
-    setTimeout(() => {
-        replacingContent.style.opacity = 1;
-    }, 320);
+    replacingContent.style.opacity = 1;
 }
 
 function updateSecondaryNav() {
-    const selectedNavItem = document.querySelector('.nav-item.selected');
+    const secondaryNav = getSecondaryNav();
+    const selectedNavItem = secondaryNav.querySelector('li.selected');
 
     if(selectedNavItem)
         selectedNavItem.classList.remove('selected');
 
-    const clickedNavItem = document.querySelector(`.nav-item > a[href="${getHash()}"]`);
+    const clickedNavItem = secondaryNav.querySelector(`a[href="${getHash()}"]`);
 
     clickedNavItem.parentElement.classList.add('selected');
 }
@@ -45,12 +43,14 @@ function updateNavVisibility() {
     const secondaryNav = document.querySelector('nav.secondary');
     const hash = getHash();
 
+    console.log(hash);
     if(hash !== '#inicio') {
         secondaryNav.classList.add('showing');
 
         return;
     }
     
+    console.log('chegou aqui');
     secondaryNav.classList.remove('showing');
 }
 
@@ -58,7 +58,6 @@ function updateFooterPosition() {
     const footer = getFooter();
 
     footer.style.position = 'absolute';
-    console.log(footer.style.position);
     footer.style.top = getContentOnDisplay().offsetHeight + 'px';
 }
 
@@ -68,6 +67,10 @@ function getContentOnDisplay() {
 
 function getFooter() {
     return document.querySelector('footer');
+}
+
+function getSecondaryNav() {
+    return document.querySelector('nav.secondary');
 }
 
 function getHash() {

@@ -19,6 +19,8 @@ TODO (apenas o essencial):
     --regular-text: #c5c5c5;
     --fancy-font: "Lora", serif;
     --regular-font: "Nunito Sans", sans-serif;
+
+    --container-width: 700px;
 }
 
 * {
@@ -31,6 +33,7 @@ TODO (apenas o essencial):
 
 body {
     background: var(--bg-color);
+    position: relative;
 }
 
 body, a {
@@ -47,7 +50,7 @@ svg {
     display: flex;
     height: 24px;
     width: 24px;
-    color: var(--regular-text);
+    fill: var(--regular-text);
 }
 
 header h1 {
@@ -75,7 +78,7 @@ nav a, footer a {
 ELEMENTOS GENÉRICOS
 -------------------*/
 .container {
-    width: 700px;
+    width: var(--container-width);
     
     margin: 0 auto;
     
@@ -123,15 +126,29 @@ FUNDO ANIMADO
     z-index: -1;
 }
 
-.mute-button {
+.top-panel {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.top-panel .buttons {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    right: 40px;
+    display: flex;
+    gap: 12px;
+}
+
+.top-panel button {
     background-color: var(--bg-color);
     border: none;
+    box-shadow: inset 0 0 0 3px goldenrod;
     padding: 12px;
     border-radius: 100%;
-    box-shadow: inset 0 0 0 3px goldenrod;
+    height: fit-content;
+    fill: red !important;
 }
 
 .mute-button svg {
@@ -212,45 +229,42 @@ nav.main {
 NAV SECUNDÁRIA
 -------------------*/
 nav.secondary {
-    pointer-events: none;
     opacity: 0;
     width: 100%;
-    margin: 40px 0;
-
-    transition: opacity ease-in-out 400ms;
 }
 
 nav.secondary.showing {
+    position: relative;
     opacity: 1;
-    pointer-events: auto;
 }
 
 nav.secondary ul {
+    display: flex;
     list-style: none;
-    display: flex;
-    gap: 4px;
+    gap: 8px;
 }
 
-nav.secondary a {
-    position: relative;
-    
-    display: flex;
-    flex-direction: row;
+nav.secondary ul li {
+    flex-grow: 1;
+}
 
-    justify-content: center;
-    align-items: center;
-
+nav.secondary li a {
+    display: inline-block;
     width: 100%;
-    height: 100%;
-
-    font-weight: bold;
-
-    padding: 0 8px;
+    background-color: var(--bg-color);
+    border: var(--card-border);
+    border-radius: 4px;
+    text-align: center;
+    padding: 8px;
 }
 
-nav.secondary .selected {
-    flex-grow: 4;
-    transition: flex-grow ease-in-out 300ms;
+nav.secondary ul li.selected {
+    flex-grow: 3;
+}
+
+nav.secondary ul li.selected a {
+    border-color: darkgoldenrod;
+    background-color: var(--card-bg);
 }
 
 .nav-item .framed-image {
@@ -258,7 +272,7 @@ nav.secondary .selected {
     width: 0;
     opacity: 0;
     top: -50px;
-    transition: top ease-in-out 300ms, opacity ease-in-out 600ms;
+    /* transition: top ease-in-out 300ms, opacity ease-in-out 600ms; */
 }
 
 .nav-item.selected .framed-image {
@@ -286,11 +300,6 @@ a.selected > span::before, li.selected a {
     border-color: goldenrod;
 }
 
-nav.secondary li {
-    flex-grow: 1;
-    position: relative;
-    height: 54px;
-}
 
 .card {
     position: relative;
@@ -335,8 +344,9 @@ nav.secondary li {
     box-sizing: border-box;
 }
 
-.card>span:hover::before, nav.secondary .framed:hover {
-    border-color: #b8860b;
+.card>span:hover::before, nav.secondary li:hover a {
+    background-color: var(--card-bg);
+    border-color: darkgoldenrod;
     transition: ease-in-out 0.3s;
 }
 
@@ -346,10 +356,6 @@ nav.secondary li {
 
 .card>span {
     user-select: none;
-}
-
-.card.selected {
-    filter: none;
 }
 
 /* .card.selected span::before {
@@ -690,14 +696,14 @@ IMAGENS
 @media only screen and (max-width: 740px) {
     .container {
         width: 100%;
-        padding: 0 32px;
+        padding: 0 24px;
+    }
+
+    .top-panel .buttons {
+        display: none;
     }
 
     .content .projects {
         grid-template-columns: 1fr !important;
-    }
-
-    .framed-image {
-        display: none;
     }
 }
