@@ -1,10 +1,6 @@
-window.onload = () => {
-    updatePage();
-}
-
-window.onhashchange = () => {
-    updatePage();
-}
+window.onload = updatePage();
+window.onhashchange = updatePage();
+window.onresize = updateFooterPosition();
 
 function updatePage() {
     updateDisplayContent(getHash());
@@ -79,6 +75,18 @@ function getHash() {
 
     return hash;
 }
+
+document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const hash = link.getAttribute('href');
+
+        history.pushState(null, null, hash);
+
+        updatePage();
+    });
+})
 
 
 /*
