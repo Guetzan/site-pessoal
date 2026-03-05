@@ -1,6 +1,6 @@
-window.onload = updatePage();
-window.onhashchange = updatePage();
-window.onresize = updateFooterPosition();
+window.onload = updatePage;
+window.onhashchange = updatePage;
+window.onresize = updateFooterPosition;
 
 function updatePage() {
     updateDisplayContent(getHash());
