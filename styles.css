@@ -256,6 +256,7 @@ nav.secondary ul {
 }
 
 nav.secondary ul li {
+    font-weight: bold;
     flex-grow: 1;
     transition: flex-grow ease-in-out 300ms;
 }
