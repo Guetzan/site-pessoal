@@ -592,7 +592,7 @@ JORNADA
 .objectives li {
     position: relative;
     overflow: hidden;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
 
@@ -606,8 +606,8 @@ JORNADA
 .objectives li::after{
     content: '';
     position: absolute;
-    height:80px;
-    width: 80px;
+    height:70px;
+    width: 70px;
     background-size: 100% auto;
     background-repeat: no-repeat;
 
@@ -664,6 +664,10 @@ IMAGENS
 
 .java::after, .skill.java .framed-image::before {
     background-image: url('./assets/tech-stacks/java.png');
+}
+
+.go::after, .skill.go .framed-image::before {
+    background-image: url('./assets/tech-stacks/go.png');
 }
 
 .git::after, .skill.git .framed-image::before  {

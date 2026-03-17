@@ -1,6 +1,14 @@
 window.onload = updatePage;
 window.onhashchange = updatePage;
-window.onresize = updateFooterPosition;
+
+let windowHeight = window.outerHeight;
+window.onresize = () => {
+    console.log(getFooter().computedStyleMap('top'));
+    
+    if(window.outerHeight != windowHeight) {
+        updateFooterPosition();
+    }
+};
 
 function updatePage() {
     updateDisplayContent(getHash());
@@ -50,7 +58,6 @@ function updateNavVisibility() {
 
 function updateFooterPosition() {
     const footer = getFooter();
-
     footer.style.position = 'absolute';
     footer.style.top = getContentOnDisplay().offsetHeight + 'px';
 }
